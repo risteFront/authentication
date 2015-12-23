@@ -1,0 +1,36 @@
+<section class="row"ng-controller="registerCtrl">
+	<h3 class="col-md-12 text-center">Login with your acount</h3>
+	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
+		<form ng-submit="login(user)"name="myform">
+			<p class="alert alert-success"ng-show="showlogout">{{message}}</p>
+			<p class="alert alert-danger"ng-show="showerror">{{message}}</p>
+			<div class="input-group input-group-lg">
+				 <span class="input-group-addon">
+				 	<i class="glyphicon glyphicon-user"></i>
+				 </span>
+				<input type='email'ng-model="user.email"id="email"class="form-control">
+
+			</div>
+			<br>
+			<div class="input-group input-group-lg">
+				 <span class="input-group-addon">
+				 	<i class="glyphicon glyphicon-asterisk"></i>
+				 </span>
+				<input type='password'ng-model="user.password"id="password"class="form-control">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<button type="submit" class="btn btn-success btn-lg btn-block">login</button>
+			</div>
+		
+			<div class="form-group">
+				<button type="button" class="btn btn-default btn-block"ng-click="logout()">log Out</button>
+			</div>
+			<div class="text-center">
+			<a href="">Forgot your password</a>	 Or <a href="#/register">register</a>
+			</div>
+		
+	</form>
+</div>
+</section>
