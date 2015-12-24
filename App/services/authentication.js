@@ -17,7 +17,6 @@ angular.module('myApp.services',[])
   });
   var myObject = {
     login: function(user) {
-     console.log(user);
 
       auth.$authWithPassword({
         email: user.email,
@@ -49,13 +48,15 @@ angular.module('myApp.services',[])
           date: Firebase.ServerValue.TIMESTAMP,
           regUser: regUser.uid,
           username: user.username,
-          email:  user.email
+          email:  user.email,
+          isAdmin:false
         }); 
 
         myObject.login(user);
 
       }).catch(function(error) {
         $scope.message = error.message;
+        $scope.showmsg=true;
 
       }); 
     } 
@@ -63,4 +64,23 @@ angular.module('myApp.services',[])
 
   return myObject;
 
+}])
+.factory('checkAdmin', ['FIREBASE_URL','$firebaseAuth','$firebaseArray','$rootScope', function(FIREBASE_URL,$firebaseAuth,$firebaseObject,$rootScope){
+return function(){
+		var obj
+  	  var ref = new Firebase(FIREBASE_URL);
+      var auth = $firebaseAuth(ref);
+  	 auth.$onAuth(function(authUser) {
+    if (authUser) {
+      var ref = new Firebase(FIREBASE_URL + 'users/' + authUser.uid );
+     ref.on("value", function(snapshot) {
+     
+      return {obj:snapshot.val()};
+}, function (errorObject) {
+    return {obj: errorObject.code};
+});     
+    } 
+  });
+  	}
+ 
 }])

@@ -24,6 +24,10 @@ angular.module('myApp', [
 	templateUrl:"views/orders.html",
 	controller:'ordersCtrl'
 	})
+	.when('/about',{
+	templateUrl:"views/about.html",
+	controller:'aboutCtrl'
+	})
   $routeProvider.otherwise({redirectTo: '/login'});
 }])
 .run(['$rootScope', '$location',

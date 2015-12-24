@@ -3,6 +3,7 @@
 	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
 		<form ng-submit="register(user)">
 						<p class="alert alert-danger"ng-show="message">{{message}}</p>
+						<p class="alett alert-danger" ng-show="showmsg">{{message}}</p>
 			 <div class="form-group">
 			    <label for="exampleInputEmail1">Email address</label>
 			    <input type="email" class="form-control" id="exampleInputEmail1" ng-model="user.email" placeholder="Email">
